@@ -2,8 +2,7 @@
 var 
 A={};
 
-$('a').each(function(i){
-	a=this;
+document.querySelectorAll('a').forEach(function(a){
 
 	href=a.href;
 	text=(a.innerText+'').trim().replace(/访问/ig,'');
