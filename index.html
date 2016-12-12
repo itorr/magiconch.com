@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>神奇海螺</title>
+
+<style>
+html{
+	zoom:2;
+}
+#结果 a{
+	display:block;
+}
+</style>
+
+<form id="输入框">
+	<input type="search" name="text" placeholder="键入关键字、回车跳转">
+</form>
+<div id="结果"></div>
+
+<script src="http://x.moedesk.com/static/js/itorr2.js"></script>
+
+<script>
+
+var 
+sites={};
+_.x('sites.json',function(r){
+	console.log(r);
+
+	sites=r;
+});
+
+
+
+
+
+输入框.onsubmit=function(e){
+	if(e)
+		e.preventDefault();
+
+
+	var 
+	text=输入框.text.value.trim().match(/^\w+$/);
+
+	if(!text){
+		结果.innerHTML='';
+		return;
+	}
+
+	console.log(sites);
+
+	var 
+	r=[];
+
+	for(var domain in sites){
+		if(domain.search(text)!=-1){
+			r.push(sites[domain]);
+		}
+	}
+
+	clearTimeout(结果.T);
+
+	结果.T=setTimeout(function(){
+
+		结果.innerHTML=r.map(function(o){
+			return `<a href="${o.href}" target="_blank">${o.domain} - ${o.title}</a>`;
+		}).join('');
+	},20);
+
+};
+
+
+输入框.text.oninput=function(){
+	输入框.onsubmit();
+}
+</script>
