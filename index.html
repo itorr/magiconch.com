@@ -66,17 +66,31 @@ h1{
 }
 
 input:focus{outline:none;}
+
+.text-banner{
+	font-size:1.4em;
+	line-height:4em;
+	color:#DDD;
+}
+
+
+footer{
+	font-size:1.4em;
+	line-height:4em;
+	color:#DDD;
+}
 </style>
 
 
 <h1>神奇海螺</h1>
 <form id="输入框" autocomplete="off">
-	<label>
-		<input type="search" name="text" placeholder="键入关键字、回车跳转">
-	</label>
+	<input type="search" name="text" placeholder="键入关键字、回车直达第一条">
 </form>
 <div id="结果"></div>
 
+<footer>
+	为什么不问问神奇海螺呢？
+</footer>
 <script src="itorr2.js"></script>
 
 <script>
@@ -84,8 +98,6 @@ input:focus{outline:none;}
 var 
 sites={};
 _.x('sites.json',function(r){
-	console.log(r);
-
 	var 
 	R={};
 	for(var domain in r){
@@ -212,9 +224,53 @@ _.x('sites.json',function(r){
 	var 
 	a=结果._('a');
 	if(a){
+
+
+		var 
+		text=输入框.text.value.trim();
+
+
+		if(最近输入结果.indexOf(text)==-1){
+
+			最近输入结果.unshift(text);
+
+			if(最近输入结果.length>5){
+				最近输入结果.length=5;
+			}
+
+			if(window.localStorage){
+				localStorage.历史搜索=JSON.stringify(最近输入结果);
+			}
+		}
+		
+
 		location.href=a.href;
 	}
 };
+
+
+var 
+最近输入结果=[];
+
+
+try{
+	最近输入结果=JSON.parse(localStorage.历史搜索);
+}catch(e){
+	最近输入结果=[];
+}
+
+
+var 
+展示最近输入的关键字=function(){
+	结果.innerHTML=
+	//'<p class="text-banner">为什么不问问神奇海螺呢</p>'+
+	最近输入结果.map(function(o){
+		return '<a action="搜索">'+o+'</a>';
+	}).join('');
+};
+
+
+展示最近输入的关键字();
 
 
 输入框.text.oninput=function(){
@@ -223,7 +279,8 @@ _.x('sites.json',function(r){
 	text=输入框.text.value.trim();//.match(/^\w+$/);
 
 	if(!text){
-		结果.innerHTML='';
+		展示最近输入的关键字();
+
 		return;
 	}
 
@@ -249,15 +306,34 @@ _.x('sites.json',function(r){
 
 	结果.T=setTimeout(function(){
 
-		console.log(r);
 		结果.innerHTML=r.map(function(o){
-			return `<a href="${o.href}" target="_blank">${o.domain} - ${o.title}</a>`;
+			return '<a href="'+o.href+'">'+o.domain+' - '+o.title+'</a>';
 		}).join('');
 	},20);
 
 }
 
 输入框.text.focus();
+
+
+document.body.onclick=function(e){
+	var 
+	target=e.target,
+	action=target.getAttribute('action');
+
+
+	switch(action){
+		case '搜索':
+
+			var 
+			text=target.innerHTML;
+
+
+			输入框.text.value=text;
+			输入框.text.oninput();
+			break;
+	}
+}
 
 
 _.j('//1.mouto.org/x.js');
