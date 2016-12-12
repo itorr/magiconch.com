@@ -18,7 +18,6 @@ $('a').each(function(i){
 
 		O={
 			href: href,
-			domain:domain,
 			title: text
 		};
 

@@ -107,6 +107,7 @@ x.onload=function(r){
 	r=JSON.parse(x.response);
 
 	for(var domain in r){
+		r[domain].domain=domain;
 		sites[domain+' '+r[domain].title]=r[domain];
 	}
 }
@@ -304,7 +305,7 @@ try{
 
 	for(var domain in sites){
 		// if(domain.search(text)!=-1){
-			sites[domain].顺序=distance(sites[domain].domain,text);//+distance(sites[domain].title,text);
+			sites[domain].顺序=distance(domain,text);//+distance(sites[domain].title,text);
 			最终展示地址列表.push(sites[domain]);
 		// }
 	}
