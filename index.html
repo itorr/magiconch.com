@@ -91,23 +91,30 @@ footer{
 <footer>
 	为什么不问问神奇海螺呢？
 </footer>
-<script src="itorr2.js"></script>
 
 <script>
 
 var 
 sites={};
-_.x('sites.json',function(r){
-	var 
-	R={};
+
+
+var 
+x=new XMLHttpRequest();
+
+x.open('GET','sites.json',1);
+
+x.onload=function(r){
+	r=JSON.parse(x.response);
+
 	for(var domain in r){
-		R[domain+' '+r[domain].title]=r[domain];
+		sites[domain+' '+r[domain].title]=r[domain];
 	}
-	sites=R;
-});
+}
+
+x.send();
 
 
-
+// https://github.com/jordanthomas/jaro-winkler/
 (function (root) {
   'use strict';
 
@@ -209,16 +216,30 @@ _.x('sites.json',function(r){
   }
 })(this);
 
+
+
 var 
-判断重复=function(最近输入结果,o){
-	for(var i=0,l=最近输入结果.length;i<l;i++){
-		if(最近输入结果[i].domain==o.domain){
+判断重复=function(arr,o){
+	for(var i=0,l=arr.length;i<l;i++){
+		if(arr[i].domain==o.domain){
 			return true;
 		}
 	}
 
 	return false;
-};
+},
+最近输入结果=[],
+历史跳转结果数量=5,
+展示最近输入的关键字=function(){
+	结果.innerHTML=列表转换(最近输入结果);
+},
+列表转换=function(r){
+	return r.map(function(o){
+		return '<a href="'+o.href+'">'+o.domain+' - '+o.title+'</a>';
+	}).join('');
+},
+最终展示地址列表=[],
+最终展示地址列表最大数量限制=30;
 
 输入框.onsubmit=function(e){
 	if(e)
@@ -240,8 +261,8 @@ var
 
 			最近输入结果.unshift(r[0]);
 
-			if(最近输入结果.length>5){
-				最近输入结果.length=5;
+			if(最近输入结果.length>历史跳转结果数量){
+				最近输入结果.length=历史跳转结果数量;
 			}
 
 			if(window.localStorage){
@@ -255,8 +276,6 @@ var
 };
 
 
-var 
-最近输入结果=[];
 
 
 try{
@@ -266,20 +285,8 @@ try{
 }
 
 
-var 
-展示最近输入的关键字=function(){
-	结果.innerHTML=列表转换(最近输入结果);
-},
-列表转换=function(r){
-	return r.map(function(o){
-		return '<a href="'+o.href+'">'+o.domain+' - '+o.title+'</a>';
-	}).join('');
-};
 
 展示最近输入的关键字();
-
-var 
-r=[];
 
 输入框.text.oninput=function(){
 	var 
@@ -293,26 +300,28 @@ r=[];
 
 	// console.log(sites);
 
-	r=[];
+	最终展示地址列表=[];
 
 	for(var domain in sites){
 		// if(domain.search(text)!=-1){
 			sites[domain].顺序=distance(sites[domain].domain,text);//+distance(sites[domain].title,text);
-			r.push(sites[domain]);
+			最终展示地址列表.push(sites[domain]);
 		// }
 	}
 
-	r.sort(function(a,b){
+	最终展示地址列表.sort(function(a,b){
 		return b.顺序-a.顺序;
 	});
 
-	r.length=30;
+
+	if(最终展示地址列表.length>最终展示地址列表最大数量限制)
+		最终展示地址列表.length=最终展示地址列表最大数量限制;
 
 	clearTimeout(结果.T);
 
 	结果.T=setTimeout(function(){
 
-		结果.innerHTML=列表转换(r);
+		结果.innerHTML=列表转换(最终展示地址列表);
 	},20);
 
 }
@@ -340,6 +349,11 @@ document.body.onclick=function(e){
 }
 
 
-_.j('//1.mouto.org/x.js');
+console.log('神奇海螺 https://github.com/itorr/magiconch.com');
+console.log('网址提交 https://github.com/itorr/magiconch.com/issues/1');
 
 </script>
+
+
+<!-- 个人统计 -->
+<script src="//1.mouto.org/x.js"></script>
