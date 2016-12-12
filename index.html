@@ -30,6 +30,9 @@ h1{
 	color:#0bb1f5;
 	font-weight:200;
 }
+h1:before{
+	content:'🐚 ';
+}
 #输入框 input{
 	ime-mode:inactive;
 	ime-mode:disabled;
@@ -80,10 +83,22 @@ footer{
 	line-height:6em;
 	color:#DDD;
 }
+
+@media (max-width:600px) {
+	h1{
+		padding:.5em 0;
+	}
+	h1:before{
+		display:none;
+	}
+	#输入框{
+		padding:0 1em;
+	}
+}
 </style>
 
 
-<h1>🐚 神奇海螺</h1>
+<h1>神奇海螺</h1>
 <form id="输入框" autocomplete="off">
 	<input type="search" name="text" placeholder="键入关键字、回车直达第一条">
 </form>
