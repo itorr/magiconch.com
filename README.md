@@ -9,3 +9,6 @@ https://github.com/itorr/magiconch.com/issues/1
 
 ## 引用的库
 https://github.com/jordanthomas/jaro-winkler
+
+## 鸣谢
+感谢 @[rocyhua](https://www.v2ex.com/member/rocyhua) 同学的样式建议
