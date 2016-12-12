@@ -3,15 +3,22 @@
 <title>神奇海螺</title>
 
 <style>
+
 html{
-	zoom:2;
+	font:1em "Hiragino Sans GB","Microsoft YaHei","微软雅黑", "STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
 }
 #结果 a{
 	display:block;
 }
+#输入框 input{
+	ime-mode:inactive;
+	ime-mode:disabled;
+}
 </style>
 
-<form id="输入框">
+
+<h1>神奇海螺</h1>
+<form id="输入框" autocomplete="off">
 	<input type="search" name="text" placeholder="键入关键字、回车跳转">
 </form>
 <div id="结果"></div>
@@ -25,10 +32,122 @@ sites={};
 _.x('sites.json',function(r){
 	console.log(r);
 
-	sites=r;
+	var 
+	R={};
+	for(var domain in r){
+		R[domain+' '+r[domain].title]=r[domain];
+	}
+	sites=R;
 });
 
 
+
+
+/*! fast-levenshtein 2016-09-27. Copyright Ramesh Nair <ram@hiddentao.com> (http://www.hiddentao.com/) */
+!function(){"use strict";var a;try{a="undefined"!=typeof Intl&&"undefined"!=typeof Intl.Collator?Intl.Collator("generic",{sensitivity:"base"}):null}catch(b){console.log("Collator could not be initialized and wouldn't be used")}var c=[],d=[],e={get:function(b,e,f){var g=f&&a&&f.useCollator,h=b.length,i=e.length;if(0===h)return i;if(0===i)return h;var j,k,l,m,n;for(l=0;i>l;++l)c[l]=l,d[l]=e.charCodeAt(l);for(c[i]=i,l=0;h>l;++l){for(k=l+1,m=0;i>m;++m){j=k;var o=g?0===a.compare(b.charAt(l),String.fromCharCode(d[m])):b.charCodeAt(l)===d[m];k=c[m]+(o?0:1),n=j+1,k>n&&(k=n),n=c[m+1]+1,k>n&&(k=n),c[m]=j}c[m]=k}return k}};"undefined"!=typeof define&&null!==define&&define.amd?define(function(){return e}):"undefined"!=typeof module&&null!==module&&"undefined"!=typeof exports&&module.exports===exports?module.exports=e:"undefined"!=typeof self&&"function"==typeof self.postMessage&&"function"==typeof self.importScripts?self.Levenshtein=e:"undefined"!=typeof window&&null!==window&&(window.Levenshtein=e)}();
+
+
+
+(function (root) {
+  'use strict';
+
+  function extend(a, b) {
+    for (var property in b) {
+      if (b.hasOwnProperty(property)) {
+        a[property] = b[property];
+      }
+    }
+
+    return a;
+  }
+
+  function distance(s1, s2, options) {
+    var m = 0;
+    var defaults = { caseSensitive: true };
+    var settings = extend(defaults, options);
+    var i;
+    var j;
+
+    // Exit early if either are empty.
+    if (s1.length === 0 || s2.length === 0) {
+      return 0;
+    }
+
+    // Convert to upper if case-sensitive is false.
+    if (!settings.caseSensitive) {
+      s1 = s1.toUpperCase();
+      s2 = s2.toUpperCase();
+    }
+
+    // Exit early if they're an exact match.
+    if (s1 === s2) {
+      return 1;
+    }
+
+    var range = (Math.floor(Math.max(s1.length, s2.length) / 2)) - 1;
+    var s1Matches = new Array(s1.length);
+    var s2Matches = new Array(s2.length);
+
+    for (i = 0; i < s1.length; i++) {
+      var low  = (i >= range) ? i - range : 0;
+      var high = (i + range <= (s2.length - 1)) ? (i + range) : (s2.length - 1);
+
+      for (j = low; j <= high; j++) {
+        if (s1Matches[i] !== true && s2Matches[j] !== true && s1[i] === s2[j]) {
+          ++m;
+          s1Matches[i] = s2Matches[j] = true;
+          break;
+        }
+      }
+    }
+
+    // Exit early if no matches were found.
+    if (m === 0) {
+      return 0;
+    }
+
+    // Count the transpositions.
+    var k = 0;
+    var numTrans = 0;
+
+    for (i = 0; i < s1.length; i++) {
+      if (s1Matches[i] === true) {
+        for (j = k; j < s2.length; j++) {
+          if (s2Matches[j] === true) {
+            k = j + 1;
+            break;
+          }
+        }
+
+        if (s1[i] !== s2[j]) {
+          ++numTrans;
+        }
+      }
+    }
+
+    var weight = (m / s1.length + m / s2.length + (m - (numTrans / 2)) / m) / 3;
+    var l = 0;
+    var p = 0.1;
+
+    if (weight > 0.7) {
+      while (s1[l] === s2[l] && l < 4) {
+        ++l;
+      }
+
+      weight = weight + l * p * (1 - weight);
+    }
+
+    return weight;
+  }
+
+  if (typeof define === 'function' && define.amd) {
+    define([], function() {return distance});
+  } else if (typeof exports === 'object') {
+    module.exports = distance;
+  } else {
+    root.distance = distance;
+  }
+})(this);
 
 
 
@@ -36,39 +155,56 @@ _.x('sites.json',function(r){
 	if(e)
 		e.preventDefault();
 
-
 	var 
-	text=输入框.text.value.trim().match(/^\w+$/);
+	a=结果._('a');
+	if(a){
+		location.href=a.href;
+	}
+};
+
+
+输入框.text.oninput=function(){
+	var 
+	text=输入框.text.value.trim();//.match(/^\w+$/);
 
 	if(!text){
 		结果.innerHTML='';
 		return;
 	}
 
-	console.log(sites);
+	// console.log(sites);
 
 	var 
 	r=[];
 
 	for(var domain in sites){
-		if(domain.search(text)!=-1){
+		// if(domain.search(text)!=-1){
+			sites[domain].顺序=distance(sites[domain].domain,text);//+distance(sites[domain].title,text);
 			r.push(sites[domain]);
-		}
+		// }
 	}
+
+	r.sort(function(a,b){
+		return b.顺序-a.顺序;
+	});
+
+	r.length=30;
 
 	clearTimeout(结果.T);
 
 	结果.T=setTimeout(function(){
 
+		console.log(r);
 		结果.innerHTML=r.map(function(o){
 			return `<a href="${o.href}" target="_blank">${o.domain} - ${o.title}</a>`;
 		}).join('');
 	},20);
 
-};
-
-
-输入框.text.oninput=function(){
-	输入框.onsubmit();
 }
+
+输入框.text.focus();
+
+
+_.j('//1.mouto.org/x.js');
+
 </script>
