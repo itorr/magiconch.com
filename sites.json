@@ -745,5 +745,20 @@
 "duanziwang.com":{"href":"http://duanziwang.com/","title":"段子","text":"段子网"},
 "coding.net":{"href":"http://coding.net/","title":"Coding"},
 "chuangzaoshi.com":{"href":"http://chuangzaoshi.com/","title":"创造狮"},
-"magiconch.com":{"href":"http://magiconch.com/","title":"神奇海螺"}
+"magiconch.com":{"href":"http://magiconch.com/","title":"神奇海螺"},
+	"fb.mu":{
+		"href":"https://fb.mu",
+		"title":"父辈的水果",
+		"text":"手感如妈妈轻浮脸颊"
+	},
+	"viosey.com":{
+		"href":"https://viosey.com",
+		"title":"Viosey",
+		"text":"一生想做自由 Geek"
+	},
+	"blog.viosey.com":{
+		"href":"https://blog.viosey.com",
+		"title":"viosey's blog",
+		"text":"一生想做自由 Geek"
+	}
 }
