@@ -108,12 +108,6 @@ _.x('sites.json',function(r){
 
 
 
-
-/*! fast-levenshtein 2016-09-27. Copyright Ramesh Nair <ram@hiddentao.com> (http://www.hiddentao.com/) */
-!function(){"use strict";var a;try{a="undefined"!=typeof Intl&&"undefined"!=typeof Intl.Collator?Intl.Collator("generic",{sensitivity:"base"}):null}catch(b){console.log("Collator could not be initialized and wouldn't be used")}var c=[],d=[],e={get:function(b,e,f){var g=f&&a&&f.useCollator,h=b.length,i=e.length;if(0===h)return i;if(0===i)return h;var j,k,l,m,n;for(l=0;i>l;++l)c[l]=l,d[l]=e.charCodeAt(l);for(c[i]=i,l=0;h>l;++l){for(k=l+1,m=0;i>m;++m){j=k;var o=g?0===a.compare(b.charAt(l),String.fromCharCode(d[m])):b.charCodeAt(l)===d[m];k=c[m]+(o?0:1),n=j+1,k>n&&(k=n),n=c[m+1]+1,k>n&&(k=n),c[m]=j}c[m]=k}return k}};"undefined"!=typeof define&&null!==define&&define.amd?define(function(){return e}):"undefined"!=typeof module&&null!==module&&"undefined"!=typeof exports&&module.exports===exports?module.exports=e:"undefined"!=typeof self&&"function"==typeof self.postMessage&&"function"==typeof self.importScripts?self.Levenshtein=e:"undefined"!=typeof window&&null!==window&&(window.Levenshtein=e)}();
-
-
-
 (function (root) {
   'use strict';
 
@@ -215,7 +209,16 @@ _.x('sites.json',function(r){
   }
 })(this);
 
+var 
+判断重复=function(最近输入结果,o){
+	for(var i=0,l=最近输入结果.length;i<l;i++){
+		if(最近输入结果[i].domain==o.domain){
+			return true;
+		}
+	}
 
+	return false;
+};
 
 输入框.onsubmit=function(e){
 	if(e)
@@ -230,9 +233,12 @@ _.x('sites.json',function(r){
 		text=输入框.text.value.trim();
 
 
-		if(最近输入结果.indexOf(text)==-1){
+		if(r[0] && !判断重复(最近输入结果,r[0])){
 
-			最近输入结果.unshift(text);
+
+
+
+			最近输入结果.unshift(r[0]);
 
 			if(最近输入结果.length>5){
 				最近输入结果.length=5;
@@ -262,16 +268,18 @@ try{
 
 var 
 展示最近输入的关键字=function(){
-	结果.innerHTML=
-	//'<p class="text-banner">为什么不问问神奇海螺呢</p>'+
-	最近输入结果.map(function(o){
-		return '<a action="搜索">'+o+'</a>';
+	结果.innerHTML=列表转换(最近输入结果);
+},
+列表转换=function(r){
+	return r.map(function(o){
+		return '<a href="'+o.href+'">'+o.domain+' - '+o.title+'</a>';
 	}).join('');
 };
 
-
 展示最近输入的关键字();
 
+var 
+r=[];
 
 输入框.text.oninput=function(){
 	var 
@@ -285,7 +293,6 @@ var
 
 	// console.log(sites);
 
-	var 
 	r=[];
 
 	for(var domain in sites){
@@ -305,9 +312,7 @@ var
 
 	结果.T=setTimeout(function(){
 
-		结果.innerHTML=r.map(function(o){
-			return '<a href="'+o.href+'">'+o.domain+' - '+o.title+'</a>';
-		}).join('');
+		结果.innerHTML=列表转换(r);
 	},20);
 
 }

@@ -148,7 +148,7 @@ var iTorr=function(W,D,_b,_,__){
 			}
 
 			// 
-			console.log(x.withCredentials,url);
+			// console.log(x.withCredentials,url);
 
 
 			//console.log(par)
