@@ -78,29 +78,8 @@ footer{
 	为什么不问问神奇海螺呢？
 </footer>
 
+
 <script>
-
-var 
-sites={};
-
-
-var 
-x=new XMLHttpRequest();
-
-x.open('GET','sites.json',1);
-
-x.onload=function(r){
-	r=JSON.parse(x.response);
-
-	for(var domain in r){
-		r[domain].domain=domain;
-		sites[domain+' '+r[domain].title]=r[domain];
-	}
-}
-
-x.send();
-
-
 // https://github.com/jordanthomas/jaro-winkler/
 (function (root) {
   'use strict';
@@ -202,7 +181,30 @@ x.send();
     root.distance = distance;
   }
 })(this);
+</script>
 
+
+<script>
+
+var 
+sites={};
+
+
+var 
+x=new XMLHttpRequest();
+
+x.open('GET','sites.json',1);
+
+x.onload=function(r){
+	r=JSON.parse(x.response);
+
+	for(var domain in r){
+		r[domain].domain=domain;
+		sites[domain+' '+r[domain].title]=r[domain];
+	}
+}
+
+x.send();
 
 
 var 
