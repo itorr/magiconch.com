@@ -1,25 +1,78 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<title>神奇海螺</title>
+<title>神奇海螺 - 为什么不问问神奇海螺呢？</title>
 
+<meta name="viewport" content="width=device-width,user-scalable=no">
 <style>
+body,h1,h2,h3,h4,h5,p,form,ol,ul{margin:0;}
+ol,ul{padding:0;}
+
 
 html{
 	font:1em "Hiragino Sans GB","Microsoft YaHei","微软雅黑", "STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
 }
-#结果 a{
-	display:block;
+
+textarea,input,option,select,button{font:inherit;}
+
+
+h1,h2,h3,h4{font-weight:600;}
+textarea:focus,
+button:focus,
+input:focus{outline:none;}
+::selection{background:rgba(0,149,255,0.1);}
+ul{list-style-type:none;}
+a{text-decoration:none;color:#007AFF;}
+img{border:0 none;}
+
+html{
+
+	text-align:center;
 }
+
+h1{
+	font-size:4em;
+	padding:1.5em 0;
+}
+
+
 #输入框 input{
 	ime-mode:inactive;
 	ime-mode:disabled;
+
+	border:none;
+	
+	font-size:1.4em;
+	padding:.7em 1em;
+	max-width:30em;
+	width:100%;
+	background:#F8F8F8;
+
+	text-align:center;
+
 }
+
+#结果{
+	padding:1em 0;
+}
+
+#结果 a{
+	display:block;
+	padding:.5em;
+	font-size:1.4em;
+}
+#结果 a:hover{
+	background:#F8F8F8;
+}
+
+input:focus{outline:none;}
 </style>
 
 
 <h1>神奇海螺</h1>
 <form id="输入框" autocomplete="off">
-	<input type="search" name="text" placeholder="键入关键字、回车跳转">
+	<label>
+		<input type="search" name="text" placeholder="键入关键字、回车跳转">
+	</label>
 </form>
 <div id="结果"></div>
 
@@ -164,6 +217,7 @@ _.x('sites.json',function(r){
 
 
 输入框.text.oninput=function(){
+
 	var 
 	text=输入框.text.value.trim();//.match(/^\w+$/);
 
