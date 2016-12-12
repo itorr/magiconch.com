@@ -291,13 +291,18 @@ try{
 		return;
 	}
 
+
+
+	var 
+	中文模式=!!text.match(/[一-龥]/);
+
 	// console.log(sites);
 
 	最终展示地址列表=[];
 
 	for(var domain in sites){
 		// if(domain.search(text)!=-1){
-			sites[domain].顺序=distance(domain,text);//+distance(sites[domain].title,text);
+			sites[domain].顺序=distance(中文模式?sites[domain].title:domain,text);//+distance(sites[domain].title,text);
 			最终展示地址列表.push(sites[domain]);
 		// }
 	}
