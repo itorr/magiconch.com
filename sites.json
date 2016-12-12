@@ -643,13 +643,11 @@
 "chaoshi.tmall.com":{"href":"http://chaoshi.tmall.com/","domain":"chaoshi.tmall.com","title":"天猫超市"},
 "minecraft.net":{"href":"https://minecraft.net/","domain":"minecraft.net","title":"Minecraft官网"},
 "mc.layacn.com":{"href":"http://mc.layacn.com/","domain":"mc.layacn.com","title":"Laya MC"},
-"sojo.im":{"href":"http://sojo.im/","domain":"sojo.im","title":"Sojo.im"}
-
-,
+"sojo.im":{"href":"http://sojo.im/","domain":"sojo.im","title":"Sojo.im"},
 "luxun.pro":{"href":"http://luxun.pro/","domain":"luxun.pro","title":"鲁迅追番"},
 "mouto.org":{"href":"http://mouto.org/","domain":"mouto.org","title":"卜卜口"},
 "i.mouto.org":{"href":"http://i.mouto.org/","domain":"i.mouto.org","title":"卜卜口的摄影集"},
 "syouzyo.org":{"href":"http://syouzyo.org/","domain":"syouzyo.org","title":"萌图狗"},
 "vscam.co":{"href":"http://vscam.co/","domain":"vscam.co","title":"VSCAM"},
-"gmail":{"href":"https://gmail.com/","domain":"gmail.com","title":"Gmail"},
-"sojo.im":{"href":"http://sojo.im/","domain":"sojo.im","title":"Sojo.im"}}
+"gmail.com":{"href":"https://gmail.com/","domain":"gmail.com","title":"Gmail"},
+"v2ex.com":{"href":"http://v2ex.com/","domain":"v2ex.com","title":"V2EX"}}
