@@ -229,7 +229,12 @@ x.onload=function(r){
 	r=JSON.parse(x.response);
 
 	for(var domain in r){
-		r[domain].domain=domain;
+		
+		r[domain].domain=r[domain].href.
+			replace(/^https?:\/\//,'').
+			replace(/^www\./,'').
+			replace(/\/.*$/,'');
+
 		sites[domain+' '+r[domain].title]=r[domain];
 	}
 }
