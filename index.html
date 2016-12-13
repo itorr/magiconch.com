@@ -229,7 +229,7 @@ x.onload=function(r){
 	r=JSON.parse(x.response);
 
 	for(var domain in r){
-		
+
 		r[domain].domain=r[domain].href.
 			replace(/^https?:\/\//,'').
 			replace(/^www\./,'').
@@ -259,7 +259,7 @@ var
 },
 列表转换=function(r){
 	return r.map(function(o){
-		return '<a href="'+o.href+'">'+o.domain+' - '+o.title+'</a>';
+		return '<a href="'+(o.href.match(/^http/)?'':'http://')+o.href+'">'+o.domain+' - '+o.title+'</a>';
 	}).join('');
 },
 最终展示地址列表=[],
