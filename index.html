@@ -258,7 +258,33 @@ var
 	}).join('');
 },
 最终展示地址列表=[],
-最终展示地址列表最大数量限制=30;
+最终展示地址列表最大数量限制=30,
+根据关键字搜索并展示=function(text){
+
+	var 
+	中文模式=!!text.match(/[一-龥]/);
+
+	// console.log(sites);
+
+	最终展示地址列表=[];
+
+	for(var domain in sites){
+		// if(domain.search(text)!=-1){
+			sites[domain].顺序=distance(中文模式?sites[domain].title:domain,text);//+distance(sites[domain].title,text);
+			最终展示地址列表.push(sites[domain]);
+		// }
+	}
+
+	最终展示地址列表.sort(function(a,b){
+		return b.顺序-a.顺序;
+	});
+
+
+	if(最终展示地址列表.length>最终展示地址列表最大数量限制)
+		最终展示地址列表.length=最终展示地址列表最大数量限制;
+
+	结果.innerHTML=列表转换(最终展示地址列表);
+};
 
 输入框.onsubmit=function(e){
 	if(e)
@@ -266,6 +292,8 @@ var
 
 	var 
 	text=输入框.text.value.trim();
+	text=text.toLowerCase();
+
 
 
 	if(text.match(/^https?:/)){
@@ -279,6 +307,8 @@ var
 		return;
 	}
 
+
+	根据关键字搜索并展示(text);
 
 	var 
 	a=结果.querySelector('a');
@@ -323,8 +353,6 @@ try{
 输入框.text.oninput=function(){
 	var 
 	text=输入框.text.value.trim();//.match(/^\w+$/);
-
-
 	text=text.toLowerCase();
 
 
@@ -341,30 +369,7 @@ try{
 	结果.T=setTimeout(function(){
 
 
-
-		var 
-		中文模式=!!text.match(/[一-龥]/);
-
-		// console.log(sites);
-
-		最终展示地址列表=[];
-
-		for(var domain in sites){
-			// if(domain.search(text)!=-1){
-				sites[domain].顺序=distance(中文模式?sites[domain].title:domain,text);//+distance(sites[domain].title,text);
-				最终展示地址列表.push(sites[domain]);
-			// }
-		}
-
-		最终展示地址列表.sort(function(a,b){
-			return b.顺序-a.顺序;
-		});
-
-
-		if(最终展示地址列表.length>最终展示地址列表最大数量限制)
-			最终展示地址列表.length=最终展示地址列表最大数量限制;
-
-		结果.innerHTML=列表转换(最终展示地址列表);
+		根据关键字搜索并展示(text);
 	},20);
 
 }
