@@ -761,5 +761,8 @@
 		"title":"viosey's blog",
 		"text":"一生想做自由 Geek"
 	},
-	"pingwest.com":{ "href":"http://no.pingwest.com/", "title":"No! PingWest", "text":"拯救碉堡了的无趣" }
+	"pingwest.com":{ "href":"http://no.pingwest.com/", "title":"No! PingWest", "text":"拯救碉堡了的无趣" },
+	"kn007.net":{ "href":"https://kn007.net/", "title":"kn007的个人博客"},
+	"uc.ragnaroks.org":{ "href":"https://uc.ragnaroks.org/", "title":"神之庭院", "text":"诸神的黄昏用户系统" },
+	"ragnaroks.org":{ "href":"https://www.ragnaroks.org/", "title":"诸神的黄昏", "text":"-1s" }
 }
