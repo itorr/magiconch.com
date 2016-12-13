@@ -265,12 +265,25 @@ var
 		e.preventDefault();
 
 	var 
+	text=输入框.text.value.trim();
+
+
+	if(text.match(/^https?:/)){
+		location.href=text;
+		return;
+	}
+
+	if(!text.match(/:/) && text.match(/^(www|blog|bbs)|\.(com|net|org)$/)){
+		location.href='http://'+text;
+		//location.href='https://www.google.com/search?safe=strict&site=&source=hp&q='+encodeURIComponent(text)+'&btnI=%C2%A0手气不错%C2%A0';
+		return;
+	}
+
+
+	var 
 	a=结果.querySelector('a');
 	if(a){
 
-
-		var 
-		text=输入框.text.value.trim();
 
 
 		if(最终展示地址列表[0] && !判断重复(最近输入结果,最终展示地址列表[0])){
@@ -311,41 +324,45 @@ try{
 	var 
 	text=输入框.text.value.trim();//.match(/^\w+$/);
 
-	if(!text){
-		展示最近输入的关键字();
-
-		return;
-	}
-
 
 	text=text.toLowerCase();
 
 
-	var 
-	中文模式=!!text.match(/[一-龥]/);
-
-	// console.log(sites);
-
-	最终展示地址列表=[];
-
-	for(var domain in sites){
-		// if(domain.search(text)!=-1){
-			sites[domain].顺序=distance(中文模式?sites[domain].title:domain,text);//+distance(sites[domain].title,text);
-			最终展示地址列表.push(sites[domain]);
-		// }
-	}
-
-	最终展示地址列表.sort(function(a,b){
-		return b.顺序-a.顺序;
-	});
-
-
-	if(最终展示地址列表.length>最终展示地址列表最大数量限制)
-		最终展示地址列表.length=最终展示地址列表最大数量限制;
-
 	clearTimeout(结果.T);
 
+
+	if(!text){
+		展示最近输入的关键字();
+		return;
+	}
+
+
+
 	结果.T=setTimeout(function(){
+
+
+
+		var 
+		中文模式=!!text.match(/[一-龥]/);
+
+		// console.log(sites);
+
+		最终展示地址列表=[];
+
+		for(var domain in sites){
+			// if(domain.search(text)!=-1){
+				sites[domain].顺序=distance(中文模式?sites[domain].title:domain,text);//+distance(sites[domain].title,text);
+				最终展示地址列表.push(sites[domain]);
+			// }
+		}
+
+		最终展示地址列表.sort(function(a,b){
+			return b.顺序-a.顺序;
+		});
+
+
+		if(最终展示地址列表.length>最终展示地址列表最大数量限制)
+			最终展示地址列表.length=最终展示地址列表最大数量限制;
 
 		结果.innerHTML=列表转换(最终展示地址列表);
 	},20);

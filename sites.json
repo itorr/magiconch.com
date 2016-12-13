@@ -30,7 +30,6 @@
 "030buy.com":{"href":"http://www.030buy.com/","title":"萌购","text":"自助日本商品代购网站"},
 "guang.com":{"href":"http://guang.com/","title":"逛","text":"推荐合适的消费购物决策特新助手"},
 "linkchic.com":{"href":"http://www.linkchic.com/","title":"风格","text":"为中高端时尚用户提供时髦、品质的网购指导"},
-"j.renren.com":{"href":"http://j.renren.com/","title":"逛街","text":"人人网旗下购物分享网站"},
 "xiangqu.com":{"href":"http://www.xiangqu.com/","title":"想去","text":"汇集全球高品质，好设计的购物社区"},
 "aoaola.com":{"href":"http://aoaola.com/","title":"凹凹啦","text":"美妆主题社区"},
 "nuandao.com":{"href":"http://www.nuandao.com/","title":"暖岛","text":"国内外买手精选有故事的设计师和独家品牌"},
@@ -442,7 +441,6 @@
 "ce.cn":{"href":"http://www.ce.cn/","title":"中国经济网"},
 "youth.cn":{"href":"http://www.youth.cn/","title":"中国青年网"},
 "cac.gov.cn":{"href":"http://www.cac.gov.cn/","title":"中国网信网"},
-"bilibili.tv":{"href":"http://www.bilibili.tv/","title":"哔哩哔哩"},
 "lamian.tv":{"href":"http://www.lamian.tv/","title":"拉面弹幕"},
 "halihali.tv":{"href":"http://www.halihali.tv/","title":"哈哩哈哩"},
 "miomio.tv":{"href":"http://www.miomio.tv/","title":"MioMio"},
@@ -764,5 +762,9 @@
 	"pingwest.com":{ "href":"http://no.pingwest.com/", "title":"No! PingWest", "text":"拯救碉堡了的无趣" },
 	"kn007.net":{ "href":"https://kn007.net/", "title":"kn007的个人博客"},
 	"uc.ragnaroks.org":{ "href":"https://uc.ragnaroks.org/", "title":"神之庭院", "text":"诸神的黄昏用户系统" },
-	"ragnaroks.org":{ "href":"https://www.ragnaroks.org/", "title":"诸神的黄昏", "text":"-1s" }
+	"ragnaroks.org":{ "href":"https://www.ragnaroks.org/", "title":"诸神的黄昏", "text":"-1s" },
+	"mail.163.com":{
+		"href":"http://mail.163.com/",
+		"title":"网易邮箱"
+	}
 }
