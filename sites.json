@@ -824,6 +824,10 @@
 		"href":"https://www.wikipedia.org/",
 		"title":"Wikipedia",
 		"text":"自由的百科全書"
+	},
+	"binarization":{
+		"href":"https://www.binarization.com",
+		"title":"Binarization"
 	}
 
 }
