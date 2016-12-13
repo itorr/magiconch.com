@@ -754,5 +754,76 @@
 	"jd":{
 		"href":"jd.com",
 		"title":"京东"
+	},
+	"hostker":{
+		"href":"www.hostker.com",
+		"title":"Hostker"
+	},
+	"zhujike":{
+		"href":"www.zhujike.com",
+		"title":"主机壳"
+	},
+	"chiphell":{ "href":"https://www.chiphell.com", "title":"Chiphell", "text":"分享与交流用户体验的最佳平台" },
+	"jubuzz":{ "href":"https://www.jubuzz.com", "title":"菊部制造", "text":"Learning By Living" },
+	"psnine":{ "href":"psnine.com", "title":"PSN中文站", "text":"Everything about PSN" } ,
+
+	"famio.cn":{ "href":"https://www.famio.cn/", "title":"绯末小筑", "text":"技术源于折腾" },
+	"crossoverjie.top":{ "href":"http://crossoverjie.top/", "title":"crossoverjie的个人博客", "text":"You never know what you can do till you try" },
+	"caisiduo.xyz":{ "href":"http://caisiduo.xyz/","title":"蔡锶铎", "text":"零三青年，只会作死，喜欢喝茶、中二、敲代码❤" },
+
+	"Binarization":{
+		"href":"https://www.binarization.com/",
+		"title":"Binarization",
+		"text":"So can you see my world?"
+	},
+	"cloudflare":{
+		"href":"https://www.cloudflare.com/",
+		"title":"CloudFlare",
+		"text":"Web Performance & Security"
+	},
+	"hstspreload.appspot":{
+		"href":"https://hstspreload.appspot.com",
+		"title":"HSTS Preload List Submission"
+	},
+	"mirrors.tuna.tsinghua.edu.cn":{
+		"href":"https://mirrors.tuna.tsinghua.edu.cn",
+		"title":"清华大学开源软件镜像站",
+		"text":"Tsinghua Open Source Mirror"
+	},
+	"mirrors.ustc.edu.cn":{
+		"href":"https://mirrors.ustc.edu.cn",
+		"title":"USTC",
+		"text":"USTC Open Source Software Mirror"
+	},
+	"mirrors.cqu.edu.cn":{
+		"href":"https://mirrors.cqu.edu.cn",
+		"title":"重庆大学镜像站",
+		"text":"Chongqing University Open Source Mirror Site"
+	},
+	"mirrors.163":{
+		"href":"http://mirrors.163.com",
+		"title":"网易开源镜像站",
+		"text":"网易开源镜像站"
+	},
+	"freebsd.org":{
+		"href":"https://www.freebsd.org",
+		"title":"FreeBSD",
+		"text":"The FreeBSD Project"
+	},
+	"python.org":{
+		"href":"https://www.python.org",
+		"title":"Python",
+		"text":"Python Programming Language"
+	},
+	"nodejs.org":{
+		"href":"https://nodejs.org",
+		"title":"Node.js",
+		"text":"Node.js Foundation"
+	},
+	"wikipedia.org":{
+		"href":"https://www.wikipedia.org/",
+		"title":"Wikipedia",
+		"text":"自由的百科全書"
 	}
+
 }
