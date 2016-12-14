@@ -828,6 +828,11 @@
 	"binarization":{
 		"href":"https://www.binarization.com",
 		"title":"Binarization"
+	},
+	 "hiapu":{
+	    "href":"http://hiapu.com",
+	    "title":"HiApu",
+	    "text":"啊噗，专属于你的话匣子"
 	}
 
 }
