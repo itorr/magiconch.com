@@ -833,6 +833,24 @@
 	    "href":"http://hiapu.com",
 	    "title":"HiApu",
 	    "text":"啊噗，专属于你的话匣子"
+	},
+	"iwch.me":{
+	    "href":"https://www.iwch.me/",
+	    "title":"Zohar's Blog",
+	    "text":"The Most Important Thing in My Life is Freedom"
+	},
+	"ctolib.com":{
+		"href":"https://www.ctolib.com",
+		"title":"CTOLib 码库",
+		"text":"开发人员交流分享社区"
+	},
+	"singee77.com":{
+		"href":"https://www.singee77.com",
+		"title":"PHP、MYSQL、ThinkPHP快速开发"
+	},
+	"getweapp.com":{
+		"href":"https://www.getweapp.com",
+		"title":"GetWeApp",
+		"text":"微信小程序学习社群"
 	}
-
 }
