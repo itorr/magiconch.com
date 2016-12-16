@@ -852,5 +852,10 @@
 		"href":"https://www.getweapp.com",
 		"title":"GetWeApp",
 		"text":"微信小程序学习社群"
+	},
+	"eyrefree.org":{
+		"href":"https://www.eyrefree.org/",
+		"title":"EyreFree",
+		"text":"普通的 iOS 开发人员"
 	}
 }
