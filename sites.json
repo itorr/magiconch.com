@@ -852,5 +852,20 @@
 		"href":"https://www.getweapp.com",
 		"title":"GetWeApp",
 		"text":"微信小程序学习社群"
+	},
+	"yingfeng.me":{
+		"href":"https://yingfeng.me",
+		"title":"迎風别葉",
+		"text":"个专注于信息安全，互联网，电子爱好者的博客"
+	},
+	"1a23.com": {
+		"href": "https://1a23.com",
+		"title": "1A23 Studio",
+		"text": "1A23 Studio, We create."
+	},
+	"91ksj":{
+		"href":"https://91ksj.com/",
+		"title":"科学看世界",
+		"text":"好的上网方法、上网工具及软件应用等领域的博客"
 	}
 }
