@@ -867,5 +867,29 @@
 		"href":"https://91ksj.com/",
 		"title":"科学看世界",
 		"text":"好的上网方法、上网工具及软件应用等领域的博客"
+	},
+	"cuobiezi.net":{
+		"href":"http://cuobiezi.net/",
+		"title":"错别字在线检查"
+	},
+	"ikanfan":{
+		"href":"http://www.ikanfan.com",
+		"title":"爱看番",
+		"text":"小而美的追番网站"
+	},
+	"99496":{
+		"href":"http://www.99496.com",
+		"title":"9站/99496.com",
+		"text":"小而美的追番网站"
+	},
+	"ikanfan.cn":{
+		"href":"https://www.ikanfan.cn",
+		"title":"番组放送",
+		"text":"方便快捷的版权动画播放地址聚合站"
+	},
+	"qqdie":{
+		"href":"http://qqdie.com",
+		"title":"QQ爹博客",
+		"text":"一个由typecho搭建的生活博客"
 	}
 }
